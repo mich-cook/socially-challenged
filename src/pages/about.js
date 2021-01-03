@@ -1,10 +1,11 @@
 import React from "react";
 
+import Header from "../components/header.js";
+
 export default function About() {
   return (
     <div>
-      <h1>Socially Challenged</h1>
-      <h2>Social Fitness Group Challenges</h2>
+      <Header heading="Socially Challenged" subheading="Social Fitness Group Challenges" />
       <p>A site for coordinating challenge progress and results.</p>
     </div>
   );

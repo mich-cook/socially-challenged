@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header heading="Socially Challenged" subheading="Social Fitness Group Challenges" />
-      {children}
+      <main>{children}</main>
       <Footer />
     </>
   );

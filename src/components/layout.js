@@ -1,21 +1,15 @@
 import React from "react";
-
 import { Link } from "gatsby";
 
-const ListLink = props => (
-  <li style={{ "display": "inline-block", "marginRight": "1rem" }}>
-    <Link to={props.to}>{props.children}</Link>
-  </li>
-);
+import Header from "./header.js";
+import Footer from "./footer.js";
 
 export default function Layout({ children }) {
   return (
-    <div style={{ "fontFamily": "sans-serif" }}>
-      <ul style={{ "textAlign": "right" }}>
-        <ListLink to="/">Home</ListLink>
-        <ListLink to="/about/">About</ListLink>
-      </ul>
+    <>
+      <Header heading="Socially Challenged" subheading="Social Fitness Group Challenges" />
       {children}
-    </div>
+      <Footer />
+    </>
   );
 }

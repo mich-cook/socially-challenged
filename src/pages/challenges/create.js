@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import Header from "../../components/header.js";
-import Footer from "../../components/footer.js";
 import Layout from "../../components/layout.js";
 
 export default class Create extends Component {
@@ -15,7 +13,6 @@ export default class Create extends Component {
   render() {
     return (
       <Layout>
-        <Header heading="Socially Challenged" subheading="Social Fitness Group Challenges" />
         <p>Create Your New Social Challenge</p>
         <label style={{ "display": "block" }}>Name: <input name="title" type="text" length="20" /></label>
         <label style={{ "display": "block" }}>Teams? <input name="teams" type="checkbox" /></label>
@@ -24,7 +21,6 @@ export default class Create extends Component {
           <p>Challenge Metrics</p>
         </div>
         <button>Create</button>
-        <Footer />
       </Layout>
     );
   }

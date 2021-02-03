@@ -22,6 +22,7 @@ export default class Footer extends Component {
         <ul>
           <li><Link to="/privacy/">Privacy</Link></li>
         </ul>
+        <p>Copyright &copy; {new Date().getFullYear()} mich. All rights reserved.</p>
         <p>The time is: {this.state.clock}</p>
       </footer>
     );

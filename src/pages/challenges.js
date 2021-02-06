@@ -8,11 +8,9 @@ import CreateChallenge from "../components/challenges/create.js";
 
 export default function ChallengesPage() {
   return (
-    <Layout>
-      <Router>
-        <PrivateRoute path="/challenges" component={Challenges} />
-        <PrivateRoute path="/challenges/create" component={CreateChallenge} />
-      </Router>
-    </Layout>
+    <Router>
+      <PrivateRoute path="/challenges" component={Challenges} />
+      <PrivateRoute path="/challenges/create" component={CreateChallenge} />
+    </Router>
   );
 };

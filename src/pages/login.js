@@ -23,7 +23,7 @@ export default class Login extends React.Component {
 
   render() {
     if (isLoggedIn()) {
-//      navigate(`/app/profile`);
+      navigate(`/challenges`);
     }
 
     return (
@@ -33,7 +33,7 @@ export default class Login extends React.Component {
           method="post"
           onSubmit={event => {
             this.handleSubmit(event)
-            navigate(`/app/profile`)
+            navigate(`/challenges`)
           }}
         >
           <label>

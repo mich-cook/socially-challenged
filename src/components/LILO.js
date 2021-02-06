@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, navigate } from "gatsby";
 
-import { getUser, isLoggedIn, logout, handleLogin as login } from "../services/auth.js"; 
+import { getUser, isLoggedIn, logout } from "../services/auth.js";
 
 export default function LILO(props) {
 

@@ -7,7 +7,8 @@ body {
   margin: 0; padding: 0;
 }
 
-#gatsby-focus-wrapper {
+#gatsby-focus-wrapper,
+#gatsby-focus-wrapper > div {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;

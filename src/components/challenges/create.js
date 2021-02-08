@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Layout from "../../components/layout.js";
+import { createChallenge } from "../../services/aws/challenge-management.js";
 
 export default class Create extends Component {
 
@@ -32,6 +33,13 @@ export default class Create extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    // the next two lines can be combined, but any processing
+    // of the form data (or validation if still needed) should
+    // happen in between them
+    const data = new FormData(e.target);
+    const jsonData = Object.fromEntries(data);
+    createChallenge(jsonData);
   }
 
   render() {

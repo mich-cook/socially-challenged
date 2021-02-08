@@ -34,7 +34,7 @@ export default class Create extends Component {
       <Layout>
         <p>Create Your New Social Challenge</p>
         <form onSubmit={this.handleSubmit}>
-          <label style={{ "display": "block" }}>Name: <input name="title" type="text" length="20" value={this.state.title} onChange={this.handleInputChange} /></label>
+          <label style={{ "display": "block" }}>Name: <input name="title" type="text" length="20" placeholder="Name of Challenge" value={this.state.title} onChange={this.handleInputChange} /></label>
           <label style={{ "display": "block" }}>Teams? <input name="teams" type="checkbox" checked={this.state.teams} onChange={this.handleInputChange} /></label>
           <label style={{ "display": "block" }}>Private? <input name="isPrivate" type="checkbox" checked={this.state.isPrivate} onChange={this.handleInputChange} /></label>
           <div style={{ "border" : "1px solid black", "padding": "10px 20px" }}>

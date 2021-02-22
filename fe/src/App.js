@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import Pages from "./pages/index.js";
+
 const App = () => {
   return (
     <React.Fragment>
-      <h1>TBD</h1>
+      <Pages />
     </React.Fragment>
   );
 };

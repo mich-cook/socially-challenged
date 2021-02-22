@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import Layout from "../components/layout.js";
+
 import Home from "./home.js";
 import About from "./about.js";
 import Privacy from "./privacy.js";
@@ -11,11 +13,13 @@ import NotFound from "./404.js";  // TODO: add this
 export default function PageRoutes() {
   return (
     <Router>
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/privacy" component={Privacy} />
-      <Route path="/challenges" component={Challenges} />
-      <Route path="/login" component={Login} />
+      <Layout>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/challenges" component={Challenges} />
+        <Route path="/login" component={Login} />
+      </Layout>
     </Router>
   );
 };

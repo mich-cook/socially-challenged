@@ -1,0 +1,28 @@
+{
+  "name": "socially-challenged-fe",
+  "version": "1.0.0",
+  "description": "the front end for socially challenged social fitness challenges",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mich-cook/socially-challenged.git"
+  },
+  "keywords": [
+    "react",
+    "parceljs"
+  ],
+  "author": "mich-cook",
+  "bugs": {
+    "url": "https://github.com/mich-cook/socially-challenged/issues"
+  },
+  "homepage": "https://github.com/mich-cook/socially-challenged#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}

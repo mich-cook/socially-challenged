@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
 
+import ChallengeList from "../components/ChallengeList.js";
 import Button from "../components/Button.js";
 
 const GQLGetChallenges = gql`
@@ -37,11 +38,7 @@ export default function Challenges() {
   return (
     <React.Fragment>
       <Button>Create Challenge</Button>
-      <ul>
-      {data.challengeList.challenges.map((challenge,i) => {
-        return <li key={i}>{challenge.id}</li>;
-      })}
-      </ul>
+      <ChallengeList challenges={data.challengeList.challenges} />
     </React.Fragment>
   );
 };

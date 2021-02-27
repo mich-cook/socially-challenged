@@ -22,6 +22,7 @@
   "homepage": "https://github.com/mich-cook/socially-challenged#readme",
   "dependencies": {
     "@apollo/client": "^3.3.11",
+    "date-fns": "^2.17.0",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.4",
     "react": "^17.0.1",

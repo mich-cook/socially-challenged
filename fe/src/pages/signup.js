@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useMutation, useApolloClient, gql } from "@apollo/client";
 import styled from "styled-components";
 
 import Button from "../components/Button.js";
@@ -26,14 +27,42 @@ const Form = styled.form`
   }
 `;
 
+const GQLSignUp = gql`
+  mutation SignUp($email: String!, $username: String!, $displayName: String!, $password: String!) {
+    registerUser(email: $email, username: $username, password: $password, displayName: $displayName)
+  }
+`;
+
 export default () => {
+
+  const [ values, setValues ] = useState();
+
+  // hard binding between field names and field data
+  const onChange = e => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    // TODO: validation, including password verify field
+    registerUser({ "variables": { ...values }});
+  };
+
+  const [ registerUser, { loading, error }] = useMutation(GQLSignUp, {
+    "onCompleted": data => {
+      localStorage.setItem("token", data.registerUser);
+    }
+  });
 
   useEffect(() => {
     document.title = `Socially Challenged | Sign Up`
   });
 
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <fieldset>
       <legend>All fields are required to register</legend>
       <label>Username:
@@ -43,6 +72,7 @@ export default () => {
           id="username"
           name="username"
           placeholder="username"
+          onChange={onChange}
       /></label>
       <label>Email Address:
         <input
@@ -51,6 +81,7 @@ export default () => {
           id="email"
           name="email"
           placeholder="example@example.com"
+          onChange={onChange}
       /></label>
       <label>Display Name:
         <input
@@ -59,6 +90,7 @@ export default () => {
           id="displayName"
           name="displayName"
           placeholder="Public Display Name"
+          onChange={onChange}
       /></label>
       <label>Password:
         <input
@@ -67,6 +99,7 @@ export default () => {
           id="password"
           name="password"
           placeholder="Password"
+          onChange={onChange}
       /></label>
       <label>Verify Password:
         <input
@@ -75,6 +108,7 @@ export default () => {
           id="passwordVerify"
           name="passwordVerify"
           placeholder="Verify Password"
+          onChange={onChange}
       /></label>
       <Button type="submit">Sign Up</Button>
       </fieldset>

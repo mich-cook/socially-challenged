@@ -7,9 +7,12 @@ import Home from "./home.js";
 import About from "./about.js";
 import Privacy from "./privacy.js";
 import Challenges from "./challenges.js";
-import Login from "./login.js";
 import NotFound from "./404.js";  // TODO: add this
 import Challenge from "./challenge.js";
+
+import Signup from "./signup.js";
+import Login from "./login.js";
+// import Logout from "./logout.js";
 
 export default function PageRoutes() {
   return (
@@ -21,6 +24,7 @@ export default function PageRoutes() {
         <Route path="/challenge/:id" component={Challenge} />
         <Route path="/challenges" component={Challenges} />
         <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
       </Layout>
     </Router>
   );

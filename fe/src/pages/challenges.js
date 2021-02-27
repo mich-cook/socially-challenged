@@ -39,6 +39,31 @@ export default function Challenges() {
     <React.Fragment>
       <Button>Create Challenge</Button>
       <ChallengeList challenges={data.challengeList.challenges} />
+      {data.challengeList.continued && (
+        <Button
+          onClick={() =>
+            // from the useQuery() hook above
+            fetchMore({
+              "variables": {
+                "cursor": data.challengeList.cursor
+              },
+              "updateQuery": (currentList, { fetchMoreResult }) => {
+                return {
+                  "challengeList": {
+                    "cursor": fetchMoreResult.challengeList.cursor,
+                    "continued": fetchMoreResult.challengeList.continued,
+                    "challenges": [
+                      ...currentList.challengeList.challenges,
+                      ...fetchMoreResult.challengeList.challenges
+                    ],
+                    "__typename": "challengeList"
+                  }
+                };
+              }
+            })
+          }
+        >Load next page</Button>
+      )}
     </React.Fragment>
   );
 };

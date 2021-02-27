@@ -9,6 +9,7 @@ import Privacy from "./privacy.js";
 import Challenges from "./challenges.js";
 import Login from "./login.js";
 import NotFound from "./404.js";  // TODO: add this
+import Challenge from "./challenge.js";
 
 export default function PageRoutes() {
   return (
@@ -17,6 +18,7 @@ export default function PageRoutes() {
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/privacy" component={Privacy} />
+        <Route path="/challenge/:id" component={Challenge} />
         <Route path="/challenges" component={Challenges} />
         <Route path="/login" component={Login} />
       </Layout>

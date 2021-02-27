@@ -33,7 +33,7 @@ const GQLSignUp = gql`
   }
 `;
 
-export default () => {
+export default props => {
 
   const [ values, setValues ] = useState();
 
@@ -54,6 +54,7 @@ export default () => {
   const [ registerUser, { loading, error }] = useMutation(GQLSignUp, {
     "onCompleted": data => {
       localStorage.setItem("token", data.registerUser);
+      props.history.push("/challenges/");
     }
   });
 

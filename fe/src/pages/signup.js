@@ -51,9 +51,16 @@ export default props => {
     registerUser({ "variables": { ...values }});
   };
 
+  const client = useApolloClient();
+
   const [ registerUser, { loading, error }] = useMutation(GQLSignUp, {
     "onCompleted": data => {
+      const lilo = { "isLoggedIn": true };
       localStorage.setItem("token", data.registerUser);
+      client.writeQuery({
+        "query": gql`{ lilo }`,
+        "data": { lilo }
+      });
       props.history.push("/challenges/");
     }
   });

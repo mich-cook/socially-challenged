@@ -29,6 +29,13 @@ const client = new ApolloClient({
   "connectToDevTools": true
 });
 
+client.onResetStore(() => {
+  cache.writeQuery({
+    "query": gql`{ lilo }`,
+    "data": { lilo }
+  });
+});
+
 const App = () => {
   return (
     <ApolloProvider client={client}>

@@ -24,6 +24,7 @@ export default function PageRoutes() {
         <Route path="/challenge/:id" component={Challenge} />
         <Route path="/challenges" component={Challenges} />
         <Route path="/login" component={Login} />
+        <Route path="/signin" component={Login} />
         <Route path="/signup" component={Signup} />
       </Layout>
     </Router>

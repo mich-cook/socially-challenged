@@ -37,7 +37,7 @@ export default withRouter((props) => {
       <H1>{props.heading}</H1>
       <H2>{props.subheading}</H2>
       <UserState>
-        {data.lilo.isLoggedIn ? (
+        {data?.lilo?.isLoggedIn ? (
           <Button onClick={() => {
             const lilo = { "isLoggedIn": false };
             localStorage.removeItem("token");  // delete JWT

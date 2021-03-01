@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 
 import Layout from "../components/layout.js";
@@ -10,6 +10,7 @@ import Privacy from "./privacy.js";
 import Challenges from "./challenges.js";
 import NotFound from "./404.js";  // TODO: add this
 import Challenge from "./challenge.js";
+import NewChallenge from "./new-challenge.js";
 
 import Signup from "./signup.js";
 import Login from "./login.js";
@@ -36,14 +37,17 @@ export default () => {
   return (
     <Router>
       <Layout>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/privacy" component={Privacy} />
-        <Route path="/challenge/:id" component={Challenge} />
-        <PrivateRoute path="/challenges" component={Challenges} />
-        <Route path="/login" component={Login} />
-        <Route path="/signin" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/privacy" component={Privacy} />
+          <PrivateRoute path="/challenge/new" component={NewChallenge} />
+          <Route path="/challenge/:id" component={Challenge} />
+          <PrivateRoute path="/challenges" component={Challenges} />
+          <Route path="/login" component={Login} />
+          <Route path="/signin" component={Login} />
+          <Route path="/signup" component={Signup} />
+        </Switch>
       </Layout>
     </Router>
   );

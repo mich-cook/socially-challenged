@@ -27,6 +27,7 @@ export default props => {
         "query": gql`{ lilo }`,
         "data": { lilo }
       });
+      // TODO: look at props.location.state.from with Redirect
       props.history.push("/challenges/");
     }
   });

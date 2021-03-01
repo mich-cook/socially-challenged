@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { useQuery, gql } from "@apollo/client";
 
 import Layout from "../components/layout.js";
 
@@ -14,7 +15,24 @@ import Signup from "./signup.js";
 import Login from "./login.js";
 // import Logout from "./logout.js";
 
-export default function PageRoutes() {
+const GQLLoggedIn = gql`{ lilo @client }`;
+
+const PrivateRoute = ({ "component": Component, ...rest }) => {
+  const { loading, error, data } = useQuery(GQLLoggedIn);
+  if (loading === true) return <p>Loading</p>;
+  if (error !== undefined) return <p>Problem verifying login</p>;
+  return (
+    <Route {...rest} render={props =>
+      data?.lilo?.isLoggedIn === true ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to={{ "pathname": "/signin", "state": { "from": props.location }}} />
+      )}
+    />
+  );
+};
+
+export default () => {
   return (
     <Router>
       <Layout>
@@ -22,7 +40,7 @@ export default function PageRoutes() {
         <Route path="/about" component={About} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/challenge/:id" component={Challenge} />
-        <Route path="/challenges" component={Challenges} />
+        <PrivateRoute path="/challenges" component={Challenges} />
         <Route path="/login" component={Login} />
         <Route path="/signin" component={Login} />
         <Route path="/signup" component={Signup} />

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 
 import ChallengeList from "../components/ChallengeList.js";
@@ -37,7 +38,7 @@ export default function Challenges() {
 
   return (
     <React.Fragment>
-      <Button>Create Challenge</Button>
+      <Link to="/challenge/new">Create Challenge</Link>
       <ChallengeList challenges={data.challengeList.challenges} />
       {data.challengeList.continued && (
         <Button

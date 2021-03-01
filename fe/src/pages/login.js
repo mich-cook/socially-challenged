@@ -1,15 +1,37 @@
 import React, { useEffect } from "react";
+import { useMutation, gql } from "@apollo/client";
 
-export default function Login() {
+import SUSI from "../components/susi.js";
 
+const GQLSignUp = gql`
+  mutation SignIn($email: String, $username: String, $password: String!) {
+    authenticateUser(email: $email, username: $username, password: $password)
+  }
+`;
+
+export default props => {
   useEffect(() => {
-    document.title = `Socially Challenged | Login`;
+    document.title = `Socially Challenged | Sign In`
+  });
+
+  const onSubmit = e => {
+    e.preventDefault();
+    authenticateUser({ "variables": { ...values }});
+  };
+
+  const [ authenticateUser, { loading, error, client }] = useMutation(GQLSignUp, {
+    "onCompleted": data => {
+      const lilo = { "isLoggedIn": true };
+      localStorage.setItem("token", data.authenticateUser);
+      client.writeQuery({
+        "query": gql`{ lilo }`,
+        "data": { lilo }
+      });
+      props.history.push("/challenges/");
+    }
   });
 
   return (
-    <React.Fragment>
-      <p>Log in to join and create challenges as well as update your progress in existing challenges.</p>
-    </React.Fragment>
+    <SUSI which="signin" submit={authenticateUser} />
   );
-
 };

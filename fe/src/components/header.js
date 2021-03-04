@@ -3,6 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import styled from "styled-components";
 
+import { GQLLoggedIn } from "../gql/query.js";
+
 import Button from "./Button.js";
 
 const PageHeader = styled.header`
@@ -25,8 +27,6 @@ const UserState = styled.div`
     margin-top: 0.5rem;
   }
 `;
-
-const GQLLoggedIn = gql`{ lilo @client }`;
 
 export default withRouter((props) => {
 

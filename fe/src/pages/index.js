@@ -16,7 +16,7 @@ import Signup from "./signup.js";
 import Login from "./login.js";
 // import Logout from "./logout.js";
 
-const GQLLoggedIn = gql`{ lilo @client }`;
+import { GQLLoggedIn } from "../gql/query.js";
 
 const PrivateRoute = ({ "component": Component, ...rest }) => {
   const { loading, error, data } = useQuery(GQLLoggedIn);

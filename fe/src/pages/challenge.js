@@ -3,20 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 
 import Challenge from "../components/Challenge.js";
 
-const GQLGetChallenge = gql`
-  query challenge($id: ID!) {
-    challenge(id: $id) {
-      id
-      createdAt
-      participantCount
-      owner {
-        id
-        displayName
-        username
-      }
-    }
-  }
-`;
+import { GQLGetChallenge } from "../gql/query.js";
 
 export default (props) => {
 

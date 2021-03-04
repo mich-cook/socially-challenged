@@ -5,24 +5,7 @@ import { useQuery, gql } from "@apollo/client";
 import ChallengeList from "../components/ChallengeList.js";
 import Button from "../components/Button.js";
 
-const GQLGetChallenges = gql`
-  query ChallengeList($cursor: String) {
-    challengeList(cursor: $cursor) {
-      challenges {
-        id
-        createdAt
-        participantCount
-        owner {
-          id
-          displayName
-          username
-        }
-      }
-      cursor
-      continued
-    }
-  }
-`;
+import { GQLGetChallenges } from "../gql/query.js";
 
 export default function Challenges() {
 

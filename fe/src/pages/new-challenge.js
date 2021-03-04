@@ -3,6 +3,8 @@ import { useMutation, gql } from "@apollo/client";
 
 import ChallengeForm from "../components/ChallengeForm.js";
 
+import { GQLGetChallenges } from "../gql/query.js";
+
 const GQLCreateChallenge = gql`
   mutation newChallenge($start: String!, $end: String!, $cutoff: String!, $metrics: String!) {
     newChallenge(start: $start, end: $end, cutoff: $cutoff, metrics: $metrics) {
@@ -17,8 +19,8 @@ export default props => {
     document.title = `Socially Challenged | New Challenge`;
   });
 
-  // TODO: BUG: clicking on challenges in the nav after this doesn't show the new challenge
   const [ data, { loading, error }] = useMutation(GQLCreateChallenge, {
+    "refetchQueries": [{ "query": GQLGetChallenges }],  // updates cache with new note
     "onCompleted": data => {
       props.history.push(`/challenge/${data.newChallenge.id}`);
     }

@@ -10,9 +10,7 @@ const UserList = styled.ul`
 export default ({ users }) => {
   return (
     <UserList>
-      {users?.map(user => {
-        return <User user={user} key={user.id} />;
-      })}
+      {users?.map(user => <User user={user} key={user.id} /> )}
     </UserList>
   );
 };

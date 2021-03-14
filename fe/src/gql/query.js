@@ -2,6 +2,19 @@ import { gql } from "@apollo/client";
 
 const GQLLoggedIn = gql`{ lilo @client }`;
 
+const GQLGetMe = gql`
+  query me {
+    me {
+      id
+      username
+      displayName
+      challengesOwned {
+        id
+      }
+    }
+  }
+`;
+
 const GQLGetChallenges = gql`
   query ChallengeList($cursor: String) {
     challengeList(cursor: $cursor) {
@@ -73,4 +86,4 @@ const GQLChallengesIJoined = gql`
   }
 `;
 
-export { GQLLoggedIn, GQLGetChallenges, GQLChallengesIOwn, GQLChallengesIJoined, GQLGetChallenge };
+export { GQLGetMe, GQLLoggedIn, GQLGetChallenges, GQLChallengesIOwn, GQLChallengesIJoined, GQLGetChallenge };

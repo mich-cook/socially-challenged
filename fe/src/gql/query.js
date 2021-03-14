@@ -27,6 +27,9 @@ const GQLGetChallenge = gql`
       id
       createdAt
       participantCount
+      participants {
+        displayName
+      }
       owner {
         id
         displayName

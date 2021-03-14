@@ -21,6 +21,7 @@ export default ({ challenge }) => {
     <ChallengeListItem>
       <ChallengeRow><Link to={`challenge/${challenge.id}`}>{challenge.id}</Link> by {challenge.owner.displayName} with {challenge.participantCount} participant(s)</ChallengeRow>
       <ChallengeRow>Created: {format(parseISO(challenge.createdAt), `MMM do, yyyy`)}</ChallengeRow>
+      <ChallengeRow>Metrics: {challenge.metrics}</ChallengeRow>
       <UserList users={challenge.participants} />
     </ChallengeListItem>
   );

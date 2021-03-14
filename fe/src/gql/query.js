@@ -39,6 +39,10 @@ const GQLGetChallenge = gql`
     challenge(id: $id) {
       id
       createdAt
+      start
+      end
+      cutoff
+      metrics
       participantCount
       participants {
         displayName
@@ -81,6 +85,7 @@ const GQLChallengesIJoined = gql`
         }
         createdAt
         participantCount
+        metrics
       }
     }
   }

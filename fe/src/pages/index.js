@@ -16,6 +16,8 @@ import Signup from "./signup.js";
 import Login from "./login.js";
 // import Logout from "./logout.js";
 
+import MyChallenges from "./my-challenges.js";
+
 import { GQLLoggedIn } from "../gql/query.js";
 
 const PrivateRoute = ({ "component": Component, ...rest }) => {
@@ -43,7 +45,8 @@ export default () => {
           <Route path="/privacy" component={Privacy} />
           <PrivateRoute path="/challenge/new" component={NewChallenge} />
           <Route path="/challenge/:id" component={Challenge} />
-          <PrivateRoute path="/challenges" component={Challenges} />
+          <PrivateRoute path="/challenges" exact component={Challenges} />
+          <PrivateRoute path="/challenges/mine" component={MyChallenges} />
           <Route path="/login" component={Login} />
           <Route path="/signin" component={Login} />
           <Route path="/signup" component={Signup} />

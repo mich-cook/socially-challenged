@@ -36,4 +36,21 @@ const GQLGetChallenge = gql`
   }
 `;
 
-export { GQLLoggedIn, GQLGetChallenges, GQLGetChallenge };
+const GQLChallengesIOwn = gql`
+  query ownedChallenges {
+    me {
+      id
+      username
+      challengesOwned {
+        id
+        owner {
+          displayName
+        }
+        createdAt
+        participantCount
+      }
+    }
+  }
+`;
+
+export { GQLLoggedIn, GQLGetChallenges, GQLChallengesIOwn, GQLGetChallenge };

@@ -10,7 +10,9 @@ import Privacy from "./privacy.js";
 import Challenges from "./challenges.js";
 import NotFound from "./404.js";  // TODO: add this
 import Challenge from "./challenge.js";
+
 import NewChallenge from "./new-challenge.js";
+import UpdateChallenge from "./update-challenge.js";
 
 import Signup from "./signup.js";
 import Login from "./login.js";
@@ -45,7 +47,8 @@ export default () => {
           <Route path="/about" component={About} />
           <Route path="/privacy" component={Privacy} />
           <PrivateRoute path="/challenge/new" component={NewChallenge} />
-          <Route path="/challenge/:id" component={Challenge} />
+          <Route path="/challenge/:id" exact component={Challenge} />
+          <PrivateRoute path="/challenge/:id/edit" component={UpdateChallenge} />
           <PrivateRoute path="/challenges" exact component={Challenges} />
           <PrivateRoute path="/challenges/mine" component={MyChallenges} />
           <PrivateRoute path="/challenges/participating" component={ChallengesParticipating} />

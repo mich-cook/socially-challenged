@@ -3,13 +3,20 @@ import { format } from "date-fns";
 
 export default props => {
 
-  const [ values, setValues ] = useState();
+  const [ values, setValues ] = useState({
+    "metrics": props?.challenge?.metrics || '',
+    "start": props?.challenge?.start || '',
+    "end": props?.challenge?.end || '',
+    "cutoff": props?.challenge?.cutoff || ''
+  });
+
   const onChange = e => {
     setValues({
       ...values,
       [e.target.name]: e.target.value
     });
   };
+
   const today = format(new Date(), `yyyy-MM-dd`);
   const tomorrow = (() => {
     const today = new Date();
@@ -27,10 +34,10 @@ export default props => {
         }
       });
       }}>
-      <label>Start: <input type="date" name="start" required="required" onChange={onChange} min={today} /></label>
-      <label>End: <input type="date" name="end" required="required" onChange={onChange} min={tomorrow} /></label>
-      <label>Cutoff: <input type="date" name="cutoff" required="required" onChange={onChange} min={tomorrow} /></label>
-      <label>Metrics: <input type="text" name="metrics" required="required" onChange={onChange} placeholder="To Be Implemented" /></label>
+      <label>Start: <input type="date" name="start" required="required" onChange={onChange} value={values.start} min={today} /></label>
+      <label>End: <input type="date" name="end" required="required" onChange={onChange} value={values.end} min={tomorrow} /></label>
+      <label>Cutoff: <input type="date" name="cutoff" required="required" onChange={onChange} value={values.cutoff} min={tomorrow} /></label>
+      <label>Metrics: <input type="text" name="metrics" required="required" onChange={onChange} value={values.metrics} placeholder="To Be Implemented" /></label>
       <button type="submit">Create</button>
     </form>
   );

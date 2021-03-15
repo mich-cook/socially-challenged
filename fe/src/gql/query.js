@@ -11,6 +11,9 @@ const GQLGetMe = gql`
       challengesOwned {
         id
       }
+      challengesParticipating {
+        id
+      }
     }
   }
 `;

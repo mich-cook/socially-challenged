@@ -16,4 +16,20 @@ const GQLDeleteChallenge = gql`
   }
 `;
 
-export { GQLUpdateChallenge, GQLDeleteChallenge };
+const GQLJoinChallenge = gql`
+  mutation joinChallenge($id: ID!) {
+    joinChallenge(id: $id) {
+      id
+    }
+  }
+`;
+
+const GQLLeaveChallenge = gql`
+  mutation leaveChallenge($id: ID!) {
+    leaveChallenge(id: $id) {
+      id
+    }
+  }
+`;
+
+export { GQLUpdateChallenge, GQLDeleteChallenge, GQLJoinChallenge, GQLLeaveChallenge };

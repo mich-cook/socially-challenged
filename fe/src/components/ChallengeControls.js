@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 
 import { GQLGetMe } from "../gql/query.js";
 
+import JoinButton from "./JoinChallenge.js";
 import DeleteButton from "./DeleteChallengeButton.js";
 
 export default props => {
@@ -15,6 +16,7 @@ export default props => {
 
   return (
     <>
+      <JoinButton me={data.me} challengeId={props.challenge.id} participantCount={props.challenge.participantCount} />
     {data.me.id === props.challenge.owner.id && (
       <>
         <Link to={`/challenge/${props.challenge.id}/edit`}>Edit</Link>

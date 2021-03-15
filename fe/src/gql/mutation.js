@@ -10,4 +10,10 @@ const GQLUpdateChallenge = gql`
   }
 `;
 
-export { GQLUpdateChallenge };
+const GQLDeleteChallenge = gql`
+  mutation deleteChallenge($id: ID!) {
+    deleteChallenge(id: $id)
+  }
+`;
+
+export { GQLUpdateChallenge, GQLDeleteChallenge };
